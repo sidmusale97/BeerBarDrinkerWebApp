@@ -7,22 +7,7 @@ import { BarsService, Bar } from '../bars.service';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  bars: Bar[];
-  constructor(
-    public barService: BarsService
-    ) { }
-    ngOnInit() {
-    this.getBars();
+  ngOnInit() {
     }
-    getBars() {
-    this.barService.getBars().subscribe(
-    data => {
-    this.bars = data;
-    },
-    error => {
-    alert('Could not retrieve a list of bars');
-    }
-    );
-    }
-   }
+}
    

@@ -4,9 +4,18 @@ import { HttpClient } from '@angular/common/http';
 export interface Bar {
   name: string;
   license: string;
-  city: string;
+  state: string;
   phone: string;
-  addr: string;
+  address: string;
+ }
+
+ export interface Spender{
+   name: string;
+   total: number;
+ }
+ export interface popItem{
+   name: string;
+   quantity: number;
  }
  
 @Injectable({
@@ -18,5 +27,15 @@ export class BarsService {
   ) { }
   getBars() {
   return this.http.get<Bar[]>('/api/bar');
+  }
+  getBar(bar: string)
+  {
+    return this.http.get<Bar>('/api/bar/' + bar)
+  }
+  getLargeSpenders(bar: string){
+    return this.http.get<any[]>('/api/bar/LargeSpender/' + bar)
+  }
+  getPopBeers(bar: string){
+    return this.http.get<any[]>('/api/bar/MostPopular/' + bar)
   }
  }
