@@ -4,5 +4,27 @@
   <p class="lead">
   This is a demo application to learn how to create a clean, responsive web in
   </p>
+  <div class="container">
+    <table class="table">
+    <thead>
+    <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>License</th>
+    <th>Address</th>
+    <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bar of bars; index as i">
+    <th>{{ i + 1 }}</th>
+    <th>{{ bar.name }}</th>
+    <th>{{ bar.license }}</th>
+    <th>{{ bar.addr }}</th>
+    <th>{{ bar.city }}</th>
+    </tr>
+    </tbody>
+    </table>
+   </div>
   </div>
  </div>

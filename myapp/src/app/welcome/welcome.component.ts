@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BarsService, Bar } from '../bars.service';
 
 @Component({
   selector: 'app-welcome',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+  bars: Bar[];
+  constructor(
+    public barService: BarsService
+    ) { }
+    ngOnInit() {
+    this.getBars();
+    }
+    getBars() {
+    this.barService.getBars().subscribe(
+    data => {
+    this.bars = data;
+    },
+    error => {
+    alert('Could not retrieve a list of bars');
+    }
+    );
+    }
+   }
+   
