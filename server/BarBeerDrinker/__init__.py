@@ -51,6 +51,48 @@ def getPopular(name):
 		return make_response(str(e), 400)
 	except Exception as e:
 		return make_response(str(e), 500)
+
+@app.route('/api/bar/TopManf/<name>', methods = ["GET"])
+def getManf(name):
+	try:
+		if name is None:
+			raise ValueError("Bar is not specified.")
+		topManfs= database.TopManf(name)
+		if (not topManfs):
+			return make_response("No bar found with the given name.", 404)
+		return json.dumps(topManfs)
+	except ValueError as e:
+		return make_response(str(e), 400)
+	except Exception as e:
+		return make_response(str(e), 500)
+
+@app.route('/api/bar/TimeDistHour/<name>', methods = ["GET"])
+def getTimeDistHour(name):
+	try:
+		if name is None:
+			raise ValueError("Bar is not specified.")
+		timedist= database.barTimeDisthourly(name)
+		if (not timedist):
+			return make_response("No bar found with the given name.", 404)
+		return json.dumps(timedist)
+	except ValueError as e:
+		return make_response(str(e), 400)
+	except Exception as e:
+		return make_response(str(e), 500)
+
+@app.route('/api/bar/TimeDistWeek/<name>', methods = ["GET"])
+def getTimeDistWeek(name):
+	try:
+		if name is None:
+			raise ValueError("Bar is not specified.")
+		timedist= database.barTimeDistweekly(name)
+		if (not timedist):
+			return make_response("No bar found with the given name.", 404)
+		return json.dumps(timedist)
+	except ValueError as e:
+		return make_response(str(e), 400)
+	except Exception as e:
+		return make_response(str(e), 500)
 @app.route('/')
 def helo():
     return "Hello"

@@ -33,7 +33,31 @@ def LargeSpenders(bar):
 		return [dict(row) for row in rs]
 def MostPopular(bar):
 	with engine.connect() as con:
-		query = sql.text('select i.name, sum(quantity) as quantity FROM hasItems h join bills b on b.billID = h.billID join items i on i.itemID = h.itemID where b.bar = :bar group by h.itemID order by sum(quantity) desc')
+		query = sql.text('select i.name, sum(quantity) as quantity FROM hasItems h join bills b on b.billID = h.billID join items i on i.itemID = h.itemID where b.bar = :bar and i.name in (select name from beers) group by h.itemID order by sum(quantity) desc')
+		rs = con.execute(query, bar = bar)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
+
+def TopManf(bar):
+	with engine.connect() as con:
+		query = sql.text('select beers.manf, sum(quantity) as quantity FROM hasItems h join bills b on b.billID = h.billID join items i on i.itemID = h.itemID join beers on beers.name = i.name where b.bar = :bar group by beers.manf order by sum(quantity) desc')
+		rs = con.execute(query, bar = bar)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
+
+def barTimeDisthourly(bar):
+	with engine.connect() as con:
+		query = sql.text('select hour(time) as hour, sum(h.quantity) as quantity from bills b join hasItems h on b.billID = h.billID where b.bar = :bar group by hour(time) order by hour(time) asc')
+		rs = con.execute(query, bar = bar)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
+
+def barTimeDistweekly(bar):
+	with engine.connect() as con:
+		query = sql.text('select dayofweek(time) as day, sum(h.quantity) as quantity from bills b join hasItems h on b.billID = h.billID where b.bar = :bar group by dayofweek(time) order by dayofweek(time) asc')
 		rs = con.execute(query, bar = bar)
 		if rs is None:
 			return None
