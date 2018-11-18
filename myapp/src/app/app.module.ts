@@ -8,13 +8,17 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BarsComponent } from './bars/bars.component';
 import {TableModule} from 'primeng/table';
 import { BarInsightsComponent } from './bar-insights/bar-insights.component';
+import { BeerComponent } from './beer/beer.component';
+import { BeerInsightsComponent } from './beer-insights/beer-insights.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     BarsComponent,
-    BarInsightsComponent
+    BarInsightsComponent,
+    BeerComponent,
+    BeerInsightsComponent
   ],
   imports: [
     BrowserModule,

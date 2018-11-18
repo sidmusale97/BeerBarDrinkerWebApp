@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BarsComponent } from './bars/bars.component';
 import { BarInsightsComponent } from './bar-insights/bar-insights.component';
+import { BeerComponent } from './beer/beer.component';
+import { BeerInsightsComponent } from './beer-insights/beer-insights.component';
+
+
 
 const routes: Routes = [
   {
@@ -19,6 +23,16 @@ const routes: Routes = [
     path: 'bars/graphs/:bar',
     pathMatch: 'full',
     component: BarInsightsComponent
+  },
+  {
+    path: 'beer',
+    pathMatch: 'full',
+    component: BeerComponent
+  },
+  {
+    path: 'beer/:beer',
+    pathMatch: 'full',
+    component: BeerInsightsComponent
   }
 ];
 

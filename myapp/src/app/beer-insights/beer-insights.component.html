@@ -1,0 +1,18 @@
+<p-table [value]="BarSellsMost">
+ <ng-template pTemplate="header">
+ <tr>
+ <th>Bar</th>
+ <th>Quantity</th>
+ </tr>
+ </ng-template>
+ <ng-template pTemplate="body" let-beer>
+ <tr>
+ <td>
+ <a routerLink="/beer/{{ beer.name }}">
+ {{ BarSellsMost.bar }}
+ </a>
+ </td>
+ <td>{{ BarSellsMost.quantity }}</td>
+ </tr>
+ </ng-template>
+</p-table>
