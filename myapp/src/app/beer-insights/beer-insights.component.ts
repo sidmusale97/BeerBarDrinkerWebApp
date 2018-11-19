@@ -12,7 +12,7 @@ import { HttpResponse } from '@angular/common/http';
 export class BeerInsightsComponent implements OnInit {
 	BarSellsMost: BarSellsMost[];
 	beerName: string;
-	drinker: drinker[];
+	drinker: BiggestConsumers[];
 	TimeBeer: TimeBeer[];
   constructor(
   	public beerService: BeersService,
