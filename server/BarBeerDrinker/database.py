@@ -10,6 +10,11 @@ def get_bars():
         rs = con.execute("SELECT name, license, state, phone, address FROM bars;")
         return [dict(row) for row in rs]
 
+def get_drinkers():
+    with engine.connect() as con:
+        rs = con.execute("SELECT name,state, phone, address FROM drinkers;")
+        return [dict(row) for row in rs]
+
 def get_bar_names():
 	with engine.connect() as con:
 		rs = con.execute("SELECT name FROM bars;")
@@ -62,3 +67,27 @@ def barTimeDistweekly(bar):
 		if rs is None:
 			return None
 		return [dict(row) for row in rs]
+
+def drinkerTransactions(drinker):
+		with engine.connect() as con:
+			query = sql.text('select b.bar,t.total,t.tip , b.time from transactions t join has h on t.billID = h.billID join drinkers d on h.drinker = d.name join bills b on b.billID = t.billID where drinker = :drinker order by time')
+			rs = con.execute(query, drinker = drinker)
+			if rs is None:
+				return None
+			return [dict(row) for row in rs]
+
+def drinkerFavItems(drinker):
+	with engine.connect() as con:
+			query = sql.text('select sum(hi.quantity) as quantity, i.name as item from hasItems hi join has h on h.billId = hi.billID join drinkers d on d.name = h.drinker join items i on i.itemID = hi.itemID where drinker = :drinker group by i.name order by sum(hi.quantity) desc')
+			rs = con.execute(query, drinker = drinker)
+			if rs is None:
+				return None
+			return [dict(row) for row in rs]
+
+def drinkerMonthlySpending(drinker):
+	with engine.connect() as con:
+			query = sql.text('select month(b.time) as month,sum(t.total) as total from transactions t join bills b on t.billID = b.billID join has h on h.billID = t.billID  where h.drinker  = :drinker group by month(b.time) order by month(b.time) asc')
+			rs = con.execute(query, drinker = drinker)
+			if rs is None:
+				return None
+			return [dict(row) for row in rs]
