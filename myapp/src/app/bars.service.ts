@@ -9,14 +9,6 @@ export interface Bar {
   address: string;
  }
 
- export interface Spender{
-   name: string;
-   total: number;
- }
- export interface popItem{
-   name: string;
-   quantity: number;
- }
  
 @Injectable({
   providedIn: 'root'
@@ -37,5 +29,18 @@ export class BarsService {
   }
   getPopBeers(bar: string){
     return this.http.get<any[]>('/api/bar/MostPopular/' + bar)
+  }
+  getTopManfs(bar:string){
+    return this.http.get<any[]>('/api/bar/TopManf/' + bar)
+  }
+
+  getHourTimeDist(bar: string)
+  {
+    return this.http.get<any[]>('/api/bar/TimeDistHour/' + bar)
+  }
+
+  getWeekTimeDist(bar: string)
+  {
+    return this.http.get<any[]>('/api/bar/TimeDistWeek/' + bar)
   }
  }

@@ -10,6 +10,10 @@ import {TableModule} from 'primeng/table';
 import { BarInsightsComponent } from './bar-insights/bar-insights.component';
 import { BeerComponent } from './beer/beer.component';
 import { BeerInsightsComponent } from './beer-insights/beer-insights.component';
+import { DrinkerComponent } from './drinker/drinker.component';
+import { DrinkerInfoComponent } from './drinker-info/drinker-info.component';
+import { ModificationComponent } from './modification/modification.component';
+import { QueryComponent } from './query/query.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { BeerInsightsComponent } from './beer-insights/beer-insights.component';
     BarsComponent,
     BarInsightsComponent,
     BeerComponent,
-    BeerInsightsComponent
+    BeerInsightsComponent,
+    DrinkerComponent,
+    DrinkerInfoComponent,
+    ModificationComponent,
+    QueryComponent
   ],
   imports: [
     BrowserModule,

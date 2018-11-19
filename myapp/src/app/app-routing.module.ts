@@ -5,7 +5,10 @@ import { BarsComponent } from './bars/bars.component';
 import { BarInsightsComponent } from './bar-insights/bar-insights.component';
 import { BeerComponent } from './beer/beer.component';
 import { BeerInsightsComponent } from './beer-insights/beer-insights.component';
-
+import {DrinkerInfoComponent} from './drinker-info/drinker-info.component';
+import { DrinkerComponent } from './drinker/drinker.component';
+import { ModificationComponent } from './modification/modification.component';
+import { QueryComponent } from './query/query.component';
 
 
 const routes: Routes = [
@@ -33,6 +36,26 @@ const routes: Routes = [
     path: 'beer/:beer',
     pathMatch: 'full',
     component: BeerInsightsComponent
+  },
+  {
+    path: 'drinker/info/:drinker',
+    pathMatch: 'full',
+    component: DrinkerInfoComponent
+  },
+  {
+    path: 'drinker',
+    pathMatch: 'full',
+    component: DrinkerComponent
+  },
+  {
+    path: 'modification',
+    pathMatch: 'full',
+    component: ModificationComponent
+  },
+  {
+    path: 'query',
+    pathMatch: 'full',
+    component: QueryComponent
   }
 ];
 

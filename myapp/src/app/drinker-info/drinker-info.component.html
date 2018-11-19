@@ -1,0 +1,28 @@
+<div class='container'>
+<h3>Drinker Transaction ordered by Time</h3>
+</div>
+<p-table [value]="transacts">
+    <ng-template pTemplate="header">
+    <tr>
+    <th>Bar</th>
+    <th>Total</th>
+    <th>Time</th>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transact>
+    <tr>
+    <td px-3>{{ transact.bar }}</td>
+    <td px-4>{{ transact.total }}</td>
+    <td px-4>{{ transact.time }}</td>
+    </tr>
+    </ng-template>
+    </p-table>
+<br>
+<div class="container">
+    <br>
+    <div id="FavItemsgraph"></div>
+</div>
+<div class="container">
+    <br>
+    <div id="MonthlySpendinggraph"></div>
+</div>
