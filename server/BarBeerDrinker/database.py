@@ -71,6 +71,9 @@ def barSellsMost(beer):
 	with engine.connect() as con:
 		query = sql.text('select bi1.bar, hasItems.quantity from (select s1.bar, bills.billID, i1.itemID from bills, (select * from sells where beer = :beer)s1,(select items.itemID from beers join items on items.name = beers.name)i1 where s1.bar = bills.bar)bi1, hasItems where bi1.billId = hasItems.billID and bi1.itemID = hasItems.itemID group by bi1.bar order by quantity desc')
 		rs = con.execute(query, beer = beer)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
 
 def barTimeDisthourly(bar):
 	with engine.connect() as con:
@@ -84,6 +87,9 @@ def biggestConsumers(beer):
 	with engine.connect() as con:
 		query = sql.text('select drinker, count(*) as How_many_times from has, (select billID from hasItems where itemID = (select itemID from items where name = :beer))bid where has.billID = bid.billID group by drinker order by How_many_times desc limit 10')
 		rs = con.execute(query, beer = beer)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
 
 def barTimeDistweekly(bar):
 	with engine.connect() as con:

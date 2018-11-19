@@ -86,7 +86,7 @@ def getBarSellsMost(name):
             raise ValueError("Bar is not specified.")
         barList= database.barSellsMost(name)
         if (not barList):
-            return make_response("No bar found with the given name.", 404)
+            return make_response("No beer found with the given name.", 404)
         return json.dumps(barList)
     except ValueError as e:
         return make_response(str(e), 400)
