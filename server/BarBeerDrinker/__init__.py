@@ -84,6 +84,34 @@ def getBarSellsMost(name):
 		return make_response(str(e), 400)
 	except Exception as e:
 		return make_response(str(e), 500)
+
+@app.route('/api/beer/BiggestConsumers/<name>',methods =["GET"])
+def getBiggestConsumers(name):
+	try:
+		if name is None:
+			raise ValueError("Beer is not specified.")
+		consumerList= database.biggestConsumers(name)
+		if (not consumerList):
+			return make_response("No beer found with the given name.", 404)
+		return json.dumps(consumerList)
+	except ValueError as e:
+		return make_response(str(e), 400)
+	except Exception as e:
+		return make_response(str(e), 500)
+
+@app.route('/api/beer/TimeBeer/<name>',methods =["GET"])
+def getTimeBeer(name):
+	try:
+		if name is None:
+			raise ValueError("Beer is not specified.")
+		timeList= database.timeBeer(name)
+		if (not timeList):
+			return make_response("No beer found with the given name.", 404)
+		return json.dumps(timeList)
+	except ValueError as e:
+		return make_response(str(e), 400)
+	except Exception as e:
+		return make_response(str(e), 500)
 @app.route('/')
 def helo():
     return "Hello"

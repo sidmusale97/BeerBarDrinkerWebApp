@@ -61,3 +61,20 @@ def barSellsMost(beer):
 			return None
 		return [dict(row) for row in rs]
 
+def biggestConsumers(beer):
+	with engine.connect() as con:
+		query = sql.text('select drinker, count(*) as How_many_times from has, (select billID from hasItems where itemID = (select itemID from items where name = :beer))bid where has.billID = bid.billID group by drinker order by How_many_times desc limit 10')
+		rs = con.execute(query, beer = beer)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
+
+def timeBeer(beer):
+	with engine.connect() as con:
+		query = sql.text('select month(b.time) as month, sum(h.quantity) as quantity from bills b join hasItems h on b.billID = h.billID join items i on i.itemID = h.itemID where i.name = :beer group by month(b.time) order by month asc')
+		rs = con.execute(query, beer = beer)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
+
+

@@ -11,6 +11,16 @@ import { HttpClient } from '@angular/common/http';
  	quantity: number;
  }
 
+ export interface BiggestConsumers{
+ 	drinker: string;
+ 	How_many_times: number;
+ }
+
+ export interface TimeBeer{
+ 	month: number;
+ 	quantity: number;
+ }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,5 +37,13 @@ export class BeersService {
   getBarSellsMost(beer: string){
   	return this.http.get<BarSellsMost[]>('/api/beer/BarSellsMost/' + beer)
   }
+
+  getBiggestConsumers(beer: string){
+  	return this.http.get<BiggestConsumers[]>('/api/beer/BiggestConsumers/' + beer)
+  }
+
+  getTimeBeer(beer: string){
+  	return this.http.get<TimeBeer[]>('/api/beer/TimeBeer/' + beer)
+  }  
 
 }
