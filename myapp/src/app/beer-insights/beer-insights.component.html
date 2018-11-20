@@ -1,10 +1,8 @@
-<p-table [value]="BarSellsMost">
-	<ng-template pTemplate='caption'>
-		<tr>
-			<th>Bars Where this beer is sold the most</th>
-		</tr>
-	</ng-template>
+<div class='container'>
+<h3>Bars where this beer is sold the most</h3>
+</div>
 
+<p-table [value]="BarSellsMost">
  <ng-template pTemplate="header">
  <tr>
  <th>Bar</th>
@@ -14,7 +12,7 @@
  <ng-template pTemplate="body" let-BarSellsMost>
  <tr>
  <td>
- <a routerLink="/bar/graphs/{{ BarSellsMost.bar }}">
+ <a routerLink="/bars/graphs/{{ BarSellsMost.bar }}">
  {{ BarSellsMost.bar }}
  </a>
  </td>
@@ -23,12 +21,11 @@
  </ng-template>
 </p-table>
 
+<div class='container'>
+<h3>Drinkers who drink this beer the most</h3>
+</div>
+
 <p-table [value]="drinker">
-	<ng-template pTemplate='caption'>
-		<tr>
-			<th>Drinkers who drink this beer the most</th>
-		</tr>
-	</ng-template>
  <ng-template pTemplate="header">
  <tr>
  <th>Drinker</th>
@@ -38,7 +35,7 @@
  <ng-template pTemplate="body" let-drinker>
  <tr>
  <td>
- <a routerLink="/drinker/{{ drinker.drinker }}">
+ <a routerLink="/drinker/info/{{ drinker.drinker }}">
  {{ drinker.drinker }}
  </a>
  </td>
@@ -47,12 +44,11 @@
  </ng-template>
 </p-table>
 
+<div class='container'>
+<h3>Time Distribution by month</h3>
+</div>
+
 <p-table [value]="TimeBeer">
-	<ng-template pTemplate='caption'>
-		<tr>
-			<th>Time Distribution by month</th>
-		</tr>
-	</ng-template>
  <ng-template pTemplate="header">
  <tr>
  <th>Month</th>
@@ -61,11 +57,7 @@
  </ng-template>
  <ng-template pTemplate="body" let-TimeBeer>
  <tr>
- <td>
- <a routerLink="/drinker/{{ drinker.drinker }}">
- {{ TimeBeer.month }}
- </a>
- </td>
+ <td>{{ TimeBeer.month }}</td>
  <td>{{ TimeBeer.quantity }}</td>
  </tr>
  </ng-template>

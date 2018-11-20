@@ -15,13 +15,24 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: WelcomeComponent
+    redirectTo: 'welcome'
+  },
+  {
+  	path: 'static',
+  	pathMatch: 'full',
+  	redirectTo: 'welcome'
+  },
+  {
+  	path: 'welcome',
+  	pathMatch: 'full',
+  	component: WelcomeComponent
   },
   {
     path: 'bars',
     pathMatch:'full',
     component:BarsComponent
   },
+
   {
     path: 'bars/graphs/:bar',
     pathMatch: 'full',

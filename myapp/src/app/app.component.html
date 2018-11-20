@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="welcome">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,33 +7,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="welcome">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/bar" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Bars
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/bars">Bar Graphs</a>
-            <a class="dropdown-item" href="/bar/addTransaction">Add Transaction</a>
-          </div>
-        </li>
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/beer" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Beer
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/beer">Beer Data</a>
+            <a class="dropdown-item" routerLink="bars">Bar Data</a>
+            <a class="dropdown-item" routerLink="bars/addTransaction">Add Transaction</a>
           </div>
         </li>
       <li class="nav-item">
-        <a class="nav-link" href="/drinker">Drinker</a>
+        <a class="nav-link" routerLink="beer">Beer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/query">Query</a>
+        <a class="nav-link" routerLink="drinker">Drinker</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/modification">Modification</a>
+        <a class="nav-link" routerLink="query">Query</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="modification">Modification</a>
       </li>
     </ul>
   </div>
