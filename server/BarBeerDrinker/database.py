@@ -134,4 +134,26 @@ def drinkerMonthlySpending(drinker):
 			if rs is None:
 				return None
 			return [dict(row) for row in rs]
+def query(query):
+	with engine.connect() as con:
+		q = sql.text(query)
+		rs = con.execute(q)
+		if rs is None:
+			return None
+		return [dict(row) for row in rs]
 
+def pattern2():
+	with engine.connect() as con:
+			query = sql.text('select bars.Open as open, bars.Close as close, time(b.time) as billTime  from bills b join bars on b.bar = bars.name where time(b.time) > bars.Close and time(b.time) <  bars.Open')
+			rs = con.execute(query)
+			if rs is None:
+				return None
+			return [dict(row) for row in rs]
+
+def pattern1():
+	with engine.connect() as con:
+			query = sql.text('select d.state as drinkerstate, d.name as drinker, b.name as bar, b.state as barstate  from frequents f join drinkers d on f.drinker = d.name join bars b on b.name = f.bar where b.state <> d.state')
+			rs = con.execute(query)
+			if rs is None:
+				return None
+			return [dict(row) for row in rs]

@@ -1,0 +1,37 @@
+<p>select d.state as drinkerstate, d.name as drinker, b.name as bar, b.state as barstate  from frequents f join drinkers d on f.drinker = d.name join bars b on b.name = f.bar where b.state <> d.state</p>
+<p-table [value]="pat1" >
+    <ng-template pTemplate="header">
+    <tr>
+    <th>Drinker</th>
+    <th>State</th>
+    <th>Bar</th>
+    <th>State</th>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+    <tr>
+    <td>{{ row.drinker }}</td>
+    <td px-3>{{ row.drinkerstate }}</td>
+    <td px-4>{{ row.bar }}</td>
+    <td px-4>{{ row.barstate }}</td>
+    </tr>
+    </ng-template>
+    </p-table>
+<br>
+<p>select bars.Open as open, bars.Close as close, time(b.time) as billTime  from bills b join bars on b.bar = bars.name where time(b.time) > bars.Close and time(b.time) <  bars.Open</p>
+<p-table [value]="pat2">
+    <ng-template>  pTemplate="header"
+    <tr>
+    <th>billTime</th>
+    <th>open</th>
+    <th>close</th>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+    <tr>
+    <td>{{ row.billTime }}</td>
+    <td px-3>{{ row.open }}</td>
+    <td px-4>{{ row.close }}</td>
+    </tr>
+    </ng-template>
+</p-table>

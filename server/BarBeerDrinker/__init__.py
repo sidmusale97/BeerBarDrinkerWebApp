@@ -208,6 +208,33 @@ def getMonthlySpending(name):
     except Exception as e:
         return make_response(str(e), 500)
 
+@app.route('/api/query/<query>', methods = ["GET"])
+def query(query):
+    try:
+        if query is None:
+            raise ValueError("No query given")
+        res = database.query(query)
+        if (not res):
+            return make_response("Blank result", 200)
+        return json.dumps(res, default=myconverter)
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route('/api/pattern1', methods=["GET"])
+def pat1():
+    ans = json.dumps(database.pattern1())
+    if (not ans):
+        return make_response("Blank result" , 200)
+    return ans
+
+@app.route('/api/pattern2', methods=["GET"])
+def pat2():
+    ans = json.dumps(database.pattern2(), default=myconverter)
+    if (not ans):
+        return make_response("Blank result" , 200)
+    return ans
 
 @app.route('/')
 def helo():

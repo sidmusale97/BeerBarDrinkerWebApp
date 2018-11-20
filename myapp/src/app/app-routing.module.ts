@@ -9,6 +9,8 @@ import {DrinkerInfoComponent} from './drinker-info/drinker-info.component';
 import { DrinkerComponent } from './drinker/drinker.component';
 import { ModificationComponent } from './modification/modification.component';
 import { QueryComponent } from './query/query.component';
+import { QueryResultComponent } from './query-result/query-result.component';
+import { PatternverifyComponent } from './patternverify/patternverify.component';
 
 
 const routes: Routes = [
@@ -67,6 +69,16 @@ const routes: Routes = [
     path: 'query',
     pathMatch: 'full',
     component: QueryComponent
+  },
+  {
+    path: 'query/:query',
+    pathMatch: 'full',
+    component: QueryResultComponent
+  },
+  {
+    path: 'pattern',
+    pathMatch:'full',
+    component: PatternverifyComponent
   }
 ];
 

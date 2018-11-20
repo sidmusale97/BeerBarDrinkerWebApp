@@ -14,6 +14,10 @@ import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerInfoComponent } from './drinker-info/drinker-info.component';
 import { ModificationComponent } from './modification/modification.component';
 import { QueryComponent } from './query/query.component';
+import { FormsModule }   from '@angular/forms';
+import { QueryResultComponent } from './query-result/query-result.component';
+import { BarTransactComponent } from './bar-transact/bar-transact.component';
+import { PatternverifyComponent } from './patternverify/patternverify.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,18 @@ import { QueryComponent } from './query/query.component';
     DrinkerComponent,
     DrinkerInfoComponent,
     ModificationComponent,
-    QueryComponent
+    QueryComponent,
+    QueryResultComponent,
+    BarTransactComponent,
+    PatternverifyComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
